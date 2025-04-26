@@ -2,7 +2,7 @@
 FROM node:16
 
 # Establece el directorio de trabajo dentro del contenedor
-WORKDIR /app
+WORKDIR /usr/src/app
 
 # Copia el package.json y package-lock.json para instalar las dependencias
 COPY package*.json ./
@@ -17,4 +17,4 @@ COPY . .
 EXPOSE 3000
 
 # Define el comando para iniciar la app
-CMD ["npm", "start"]
+CMD ["node", "server.js"]
