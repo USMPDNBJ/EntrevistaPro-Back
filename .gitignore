@@ -1,0 +1,28 @@
+# Node.js
+node_modules/
+
+# Archivos de entorno
+.env
+
+# Archivos de log
+*.log
+
+# Directorios de compilación
+dist/
+build/
+
+# Dependencias de producción
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Archivos de configuración de IDE
+.vscode/
+.idea/
+
+# Archivos de cobertura
+coverage/
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
