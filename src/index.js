@@ -9,7 +9,7 @@ import createUserTable from "./data/createUserTable.js"
 dotenv.config();
 
 const app = express()
-const port = process.env.PORT || 3001
+const port = process.env.PORT || 5001
 //Middlewares
 app.use(express.json())
 app.use(cors())

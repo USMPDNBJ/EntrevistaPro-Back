@@ -1,5 +1,5 @@
 import pkg from "pg";
-const {Pool} = pkg;
+const { Pool } = pkg;
 import dotenv from "dotenv";
 dotenv.config();
 const pool = new Pool({
@@ -8,8 +8,11 @@ const pool = new Pool({
     database: process.env.DB_DATABASE,
     password: process.env.DB_PASSWORD,
     port: process.env.DB_PORT,
+    ssl: {
+        rejectUnauthorized: false // solo para desarrollo
+    }
 })
-pool.on("connect",()=>{
+pool.on("connect", () => {
     console.log("conexión estable");
 })
 export default pool;
