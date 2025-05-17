@@ -15,7 +15,7 @@ export const getSessionByUserIdService = async (id) => {
     const result = await pool.query(`
   SELECT 
     t_session.id, 
-    CONCAT(t_users.nombres, ' ', t_users.apellidos) AS nombre_completo,
+    CONCAT(t_users.nombres, ' ', t_users.apellidos) AS trabajador,
     t_session.fecha, 
     t_session.hora_inicio, 
     t_session.hora_fin,
