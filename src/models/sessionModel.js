@@ -13,19 +13,21 @@ export const getSessionByIdService = async (id) => {
 };
 export const getSessionByUserIdService = async (id) => {
     const result = await pool.query(`
-  SELECT 
-    t_session.id, 
-    CONCAT(t_users.nombres, ' ', t_users.apellidos) AS trabajador,
-    t_session.fecha, 
-    t_session.hora_inicio, 
-    t_session.hora_fin,
-    t_session.estado, 
-    t_session.evaluacion, 
-    t_session.creado_en, 
-    t_session.enlace
-  FROM t_session 
-  LEFT JOIN t_users ON t_session.profesional_id = t_users.id 
-  WHERE t_session.usuario_id = $1
+     SELECT 
+            t_session.id, 
+            CONCAT(t_users.nombres, ' ', t_users.apellidos) AS trabajador,
+            t_session.fecha, 
+            t_session.hora_inicio, 
+            t_session.hora_fin,
+            t_session.estado, 
+            t_session.evaluacion, 
+            t_session.creado_en, 
+            t_session.enlace
+        FROM t_session 
+        LEFT join t_users ON t_session.profesional_id = t_users.id 
+        WHERE t_session.usuario_id = $1
+        AND t_session.fecha IS NOT NULL  -- Aseguramos que la fecha no sea nula
+        AND t_session.estado IS NOT NULL
 `, [id]);
 
     return result.rows[0];
