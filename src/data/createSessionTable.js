@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS t_session (
     hora_inicio TIME NOT NULL,
     hora_fin TIME NOT NULL,
     estado VARCHAR(50),
-    evaluacion BYTEA,  -- para guardar archivos PDF como binarios
+    evaluacion TEXT,  -- para guardar archivos PDF como binarios
     creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     enlace TEXT
 );`

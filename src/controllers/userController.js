@@ -1,4 +1,4 @@
-import { createUserService, deleteUserService, getAllUserService, getUserByIdService, updateUserService, verifiedUserService } from "../models/userModel.js";
+import { createUserService, deleteUserService, getAllUserService, getUserByIdService, getWorkersService, updateUserService, verifiedUserService } from "../models/userModel.js";
 
 const handleResponse = (res, status, message, data = null)=>{
     res.status(status).json({
@@ -21,6 +21,14 @@ export const getAllUsers = async(req, res, next)=>{
     try{
         const users = await getAllUserService();
         handleResponse(res, 201, "user created", users)
+    }catch(err){
+        next(err);
+    }
+}
+export const getAllWorkers = async(req, res, next)=>{
+    try{
+        const workers = await getWorkersService();
+        handleResponse(res, 201, "workers obtained", workers)
     }catch(err){
         next(err);
     }

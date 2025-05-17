@@ -8,6 +8,10 @@ export const getUserByIdService = async (id) =>{
     const result = await pool.query("SELECT * FROM t_users where id = $1", [id]);
     return  result.rows[0];
 };
+export const getWorkersService = async () =>{
+    const result = await pool.query("SELECT * FROM t_users where rol = $1",['Worker']);
+    return  result.rows[0];
+};
 export const verifiedUserService = async (correo, contrasena) =>{
     const result = await pool.query("SELECT id, rol FROM t_users where correo = $1 and contrasena = $2" , [correo,contrasena]);
     return  result.rows[0];
