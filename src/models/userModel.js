@@ -9,7 +9,7 @@ export const getUserByIdService = async (id) =>{
     return  result.rows[0];
 };
 export const verifiedUserService = async (correo, contrasena) =>{
-    const result = await pool.query("SELECT correo, contrasena, rol FROM t_users where correo = $1 and contrasena = $2" , [correo,contrasena]);
+    const result = await pool.query("SELECT id, rol FROM t_users where correo = $1 and contrasena = $2" , [correo,contrasena]);
     return  result.rows[0];
 };
 export const createUserService = async (correo, contrasena, nombres, apellidos, dni, celular, habilidades) =>{
