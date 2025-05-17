@@ -24,7 +24,7 @@ export const getSessionByUserIdService = async (id) => {
     t_session.creado_en, 
     t_session.enlace
   FROM t_session 
-  INNER JOIN t_users ON t_session.profesional_id = t_users.id 
+  LEFT JOIN t_users ON t_session.profesional_id = t_users.id 
   WHERE t_session.usuario_id = $1
 `, [id]);
 
