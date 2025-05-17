@@ -9,7 +9,7 @@ export const getAllSessionService = async () => {
 // Obtener una sesión por ID
 export const getSessionByIdService = async (id) => {
     const result = await pool.query("SELECT * FROM t_session WHERE id = $1", [id]);
-    return result.rows[0];
+    return result.rows;
 };
 export const getSessionByUserIdService = async (id) => {
     const result = await pool.query(`
@@ -30,7 +30,7 @@ export const getSessionByUserIdService = async (id) => {
         AND t_session.estado IS NOT NULL
 `, [id]);
 
-    return result.rows[0];
+    return result.rows;
 };
 
 // Crear una nueva sesión
