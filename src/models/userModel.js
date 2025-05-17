@@ -18,7 +18,7 @@ export const verifiedUserService = async (correo, contrasena) =>{
 };
 export const createUserService = async (correo, contrasena, nombres, apellidos, dni, celular, habilidades, rol) =>{
     const result = await pool.query("INSERT INTO t_users (correo, contrasena, nombres, apellidos, dni, celular, habilidades, rol) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *",
-         [correo, contrasena, nombres, apellidos, dni, celular,habilidades]);
+         [correo, contrasena, nombres, apellidos, dni, celular,habilidades, rol]);
          console.log()
     return  result.rows[0];
 };

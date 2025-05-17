@@ -8,6 +8,7 @@ const userScheme = Joi.object({
     dni: Joi.string().min(3).required(),
     celular: Joi.string().min(3).required(),
     habilidades: Joi.array().required(),
+    rol: Joi.array().required(),
 })
 const validatedUser = (req, res, next) => {
     const { error } = userScheme.validate(req.body);

@@ -3,11 +3,11 @@ import { createUser, deleteUser, getAllUsers, getUserById, updateUser,verifiedUs
 import validateUser from "../middlewares/inputValidators.js"
 const router = express.Router();
 
-router.post("/user", validateUser, createUser);
+router.post("/user", createUser);
 router.get("/user", getAllUsers);
 router.get("/user/workers", getAllWorkers);
 router.get("/user/:id", getUserById);
-router.put("/user/:id", validateUser, updateUser);
+router.put("/user/:id", updateUser);
 router.delete("/user/:id", deleteUser);
 router.post("/user/login", verifiedUser);
 
