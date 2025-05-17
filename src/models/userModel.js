@@ -9,7 +9,7 @@ export const getUserByIdService = async (id) =>{
     return  result.rows[0];
 };
 export const verifiedUserService = async (correo, contrasena) =>{
-    const result = await pool.query("SELECT * FROM t_users where correo = $1 and contrasena = $2" , [correo,contrasena]);
+    const result = await pool.query("SELECT correo, contrasena, rol FROM t_users where correo = $1 and contrasena = $2" , [correo,contrasena]);
     return  result.rows[0];
 };
 export const createUserService = async (correo, contrasena, nombres, apellidos, dni, celular, habilidades) =>{
@@ -18,12 +18,12 @@ export const createUserService = async (correo, contrasena, nombres, apellidos, 
          console.log()
     return  result.rows[0];
 };
-export const updateUsersService = async (correo, contrasena, nombres, apellidos, dni, celular, habilidades, id) =>{
+export const updateUserService = async (correo, contrasena, nombres, apellidos, dni, celular, habilidades, id) =>{
     const result = await pool.query("UPDATE t_users SET correo=$1, contrasena=$2, nombres=$3, apellidos=$4, dni=$5, celular=$6, habilidades=$7 WHERE id=$8 RETURNING *",
         [correo, contrasena, nombres, apellidos, dni, celular, habilidades, id ]);
     return  result.rows[0];
 };
-export const deleteUsersService = async (id) =>{
+export const deleteUserService = async (id) =>{
     const result = await pool.query("DELETE FROM t_users where id = $1 RETURNING *", [id]);
     return  result.rows[0];
 };

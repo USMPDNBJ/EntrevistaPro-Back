@@ -3,8 +3,11 @@ import cors from "cors"
 import dotenv from "dotenv"
 import pool from "./config/db.js"
 import userRoutes from "./routes/userRoutes.js"
+import sessionRoutes from "./routes/sessionRoutes.js"
 import errorHandling from "./middlewares/errorHandler.js"
 import createUserTable from "./data/createUserTable.js"
+import createSessionTable from "./data/createSessionTable.js"
+
 
 dotenv.config();
 
@@ -16,11 +19,15 @@ app.use(cors())
 
 //Routes
 app.use("/api",userRoutes)
+app.use("/api",sessionRoutes)
 
 // Error handling middleware
 app.use(errorHandling)
 //Create table
 createUserTable()
+
+createSessionTable()
+
 
 //Testing
 app.get("/", async(req, res) => {
