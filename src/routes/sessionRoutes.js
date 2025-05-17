@@ -1,5 +1,5 @@
 import express from "express";
-import { createSession, deleteSession, getAllSessions, getSessionById, updateSession } from "../controllers/sessionController.js";
+import { createSession, deleteSession, getAllSessions, getSessionById, updateSession,getSessionByUserId } from "../controllers/sessionController.js";
 
 const router = express.Router();
 
@@ -11,6 +11,8 @@ router.get("/session", getAllSessions);
 
 // Obtener una sesión por ID
 router.get("/session/:id", getSessionById);
+
+router.get("/session/user/:id", getSessionByUserId);
 
 // Actualizar una sesión existente
 router.put("/session/:id", updateSession);

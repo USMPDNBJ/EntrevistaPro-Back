@@ -11,6 +11,25 @@ export const getSessionByIdService = async (id) => {
     const result = await pool.query("SELECT * FROM t_session WHERE id = $1", [id]);
     return result.rows[0];
 };
+export const getSessionByUserIdService = async (id) => {
+    const result = await pool.query(`
+  SELECT 
+    t_session.id, 
+    CONCAT(t_users.nombres, ' ', t_users.apellidos) AS nombre_completo,
+    t_session.fecha, 
+    t_session.hora_inicio, 
+    t_session.hora_fin,
+    t_session.estado, 
+    t_session.evaluacion, 
+    t_session.creado_en, 
+    t_session.enlace
+  FROM t_session 
+  INNER JOIN t_users ON t_session.profesional_id = t_users.id 
+  WHERE t_session.usuario_id = $1
+`, [id]);
+
+    return result.rows[0];
+};
 
 // Crear una nueva sesión
 export const createSessionService = async (usuario_id, profesional_id, fecha, hora_inicio, hora_fin, estado, evaluacion, enlace) => {

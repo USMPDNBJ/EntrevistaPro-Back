@@ -1,4 +1,4 @@
-import { createSessionService, deleteSessionService, getAllSessionService, getSessionByIdService, updateSessionService } from "../models/sessionModel.js";
+import { createSessionService, deleteSessionService, getAllSessionService, getSessionByIdService, updateSessionService, getSessionByUserIdService } from "../models/sessionModel.js";
 
 const handleResponse = (res, status, message, data = null) => {
     res.status(status).json({
@@ -30,6 +30,15 @@ export const getAllSessions = async (req, res, next) => {
 export const getSessionById = async (req, res, next) => {
     try {
         const session = await getSessionByIdService(req.params.id);
+        if (!session) return handleResponse(res, 404, "Session not found");
+        handleResponse(res, 200, "Session fetched successfully", session);
+    } catch (err) {
+        next(err);
+    }
+};
+export const getSessionByUserId = async (req, res, next) => {
+    try {
+        const session = await getSessionByUserIdService(req.params.id);
         if (!session) return handleResponse(res, 404, "Session not found");
         handleResponse(res, 200, "Session fetched successfully", session);
     } catch (err) {
