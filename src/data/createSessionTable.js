@@ -6,6 +6,7 @@ CREATE TABLE IF NOT EXISTS t_session (
     id SERIAL PRIMARY KEY,
     usuario_id INTEGER NOT NULL,
     profesional_id INTEGER,
+    id_pago INTEGER,
     fecha DATE NOT NULL,
     hora_inicio TIME NOT NULL,
     hora_fin TIME NOT NULL,
