@@ -3,11 +3,11 @@ const { Pool } = pkg;
 import dotenv from "dotenv";
 dotenv.config();
 const pool = new Pool({
-    user: process.env.example.DB_USER,
-    host: process.env.example.DB_HOST,
-    database: process.env.example.DB_DATABASE,
-    password: process.env.example.DB_PASSWORD,
-    port: process.env.example.DB_PORT,
+    user: process.env.DB_USER,
+    host: process.env.DB_HOST,
+    database: process.env.DB_DATABASE,
+    password: process.env.DB_PASSWORD,
+    port: process.env.DB_PORT,
 })
 pool.on("connect", () => {
     console.log("conexión estable");
