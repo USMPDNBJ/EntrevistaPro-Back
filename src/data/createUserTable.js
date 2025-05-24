@@ -10,7 +10,8 @@ const createUserTable = async () => {
     apellidos TEXT,
     dni TEXT,
     celular TEXT,
-    habilidades TEXT[]
+    habilidades TEXT[],
+    rol TEXT
 )
     `
     try {
