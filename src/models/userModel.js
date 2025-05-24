@@ -1,7 +1,7 @@
 import pool from "../config/db.js";    
 
 export const getAllUserService = async () =>{
-    const result = await pool.query("SELECT * FROM t_users");
+    const result = await pool.query("SELECT * FROM t_users where rol = $1",['User']);
     return  result.rows;
 };
 export const getUserByIdService = async (id) =>{
