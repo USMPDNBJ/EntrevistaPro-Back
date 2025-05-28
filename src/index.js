@@ -5,10 +5,12 @@ import pool from "./config/db.js"
 import userRoutes from "./routes/userRoutes.js"
 import pagoRoutes from "./routes/pagoRoutes.js"
 import sessionRoutes from "./routes/sessionRoutes.js"
+import courseRoutes from "./routes/courseRoutes.js"
 import errorHandling from "./middlewares/errorHandler.js"
 import createUserTable from "./data/createUserTable.js"
 import createSessionTable from "./data/createSessionTable.js"
 import createPagoTable from "./data/createPagoTable.js"
+import createCourseTable from "./data/createCourseTable.js"
 
 
 dotenv.config();
@@ -23,6 +25,7 @@ app.use(cors())
 app.use("/api",userRoutes)
 app.use("/api",sessionRoutes)
 app.use("/api",pagoRoutes)
+app.use("/api",courseRoutes)
 
 // Error handling middleware
 app.use(errorHandling)
@@ -30,6 +33,7 @@ app.use(errorHandling)
 createUserTable()
 createSessionTable()
 createPagoTable()
+createCourseTable()
 
 
 //Testing
