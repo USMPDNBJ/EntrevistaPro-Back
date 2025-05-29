@@ -1,4 +1,4 @@
-import { createUserService, deleteUserService, getAdminService, getAllUserService, getUserByIdService, getUsersGService, getWorkersService, updateUserService, verifiedUserService } from "../models/userModel.js";
+import { createUserService, deleteUserService, getAllUserService, getUserByIdService, getPerfilService, getWorkersService, updateUserService, verifiedUserService } from "../models/userModel.js";
 
 const handleResponse = (res, status, message, data = null)=>{
     res.status(status).json({
@@ -27,7 +27,7 @@ export const getAllUsers = async(req, res, next)=>{
 }
 export const getPerfil = async(req, res, next)=>{
     try{
-        const users = await getUsersGService();
+        const users = await getPerfilService();
         handleResponse(res, 201, "admin received", users)
     }catch(err){
         next(err);

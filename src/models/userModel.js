@@ -5,7 +5,7 @@ export const getAllUserService = async () =>{
     return  result.rows;
 };
 
-export const getUsersGService = async () =>{
+export const getPerfilService = async () =>{
     const result = await pool.query("SELECT * FROM t_users");
     return  result.rows;
 };
