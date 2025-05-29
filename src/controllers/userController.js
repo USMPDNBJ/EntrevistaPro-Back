@@ -27,12 +27,13 @@ export const getAllUsers = async(req, res, next)=>{
 }
 export const getPerfil = async(req, res, next)=>{
     try{
-        const users = await getPerfilService();
-        handleResponse(res, 201, "admin received", users)
+        const users = await getPerfilService(req.params.id);
+        handleResponse(res, 201, "perfil received", users)
     }catch(err){
         next(err);
     }
 }
+
 export const getAllWorkers = async(req, res, next)=>{
     try{
         const workers = await getWorkersService();

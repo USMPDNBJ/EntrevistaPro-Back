@@ -5,8 +5,8 @@ export const getAllUserService = async () =>{
     return  result.rows;
 };
 
-export const getPerfilService = async () =>{
-    const result = await pool.query("SELECT * FROM t_users");
+export const getPerfilService = async (id) =>{
+    const result = await pool.query("SELECT * FROM t_users  where id = $1", [id]);
     return  result.rows;
 };
 
