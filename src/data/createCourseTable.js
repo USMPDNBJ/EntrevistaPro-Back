@@ -6,11 +6,13 @@ const createCourseTable = async () => {
     id_course SERIAL PRIMARY KEY,    
     nombre TEXT,
     descripcion TEXT,
+    descripcion2 TEXT,
     profesional TEXT,
     duracion TEXT,
     precio INTEGER,
     categoria TEXT,
-    etapas TEXT[]
+    etapas TEXT[],
+    url TEXT
 )
     `
     try {
@@ -20,4 +22,5 @@ const createCourseTable = async () => {
         console.log("Error creating user table", error)
     }
 }
+
 export default createCourseTable;
