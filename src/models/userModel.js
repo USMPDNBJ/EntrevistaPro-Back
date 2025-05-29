@@ -4,6 +4,10 @@ export const getAllUserService = async () =>{
     const result = await pool.query("SELECT * FROM t_users where rol = $1",['User']);
     return  result.rows;
 };
+export const getAdminService = async () =>{
+    const result = await pool.query("SELECT * FROM t_users where rol = $1",['Admin']);
+    return  result.rows;
+};
 export const getUserByIdService = async (id) =>{
     const result = await pool.query("SELECT * FROM t_users where id = $1 and rol = $2", [id, 'User']);
     return  result.rows[0];
