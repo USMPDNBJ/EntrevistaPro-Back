@@ -1,4 +1,4 @@
-import { getAllCourseService, getCourseByIdService } from "../models/courseModel.js";
+import { getAllCourseService, getCourseByIdService, createCourseService, updateCourseService, deleteCourseService } from "../models/courseModel.js";
 
 const handleResponse = (res, status, message, data = null) => {
     res.status(status).json({
