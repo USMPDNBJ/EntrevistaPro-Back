@@ -1,7 +1,7 @@
 import pool from "../config/db.js";
 
 export const getAllCourseService = async () => {
-    const result = await pool.query("SELECT id_course,  nombre, descripcion, profesional, duracion, precio, imagen FROM t_course");
+    const result = await pool.query("SELECT id_course,  nombre, descripcion, categoria, fecha_inicio, profesional, duracion, precio, imagen FROM t_course");
     return result.rows;
 };
 
