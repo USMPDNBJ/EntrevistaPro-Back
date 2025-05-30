@@ -1,12 +1,12 @@
 import pool from "../config/db.js";    
 
 export const getAllCourseService = async () =>{
-    const result = await pool.query("SELECT id_course,  nombre, descripcion, profesional, duracion, horario, precio, url FROM t_course");
+    const result = await pool.query("SELECT id_course,  nombre, descripcion, profesional, duracion, precio, imagen FROM t_course");
     return  result.rows;
 };
 
 export const getCourseByIdService = async (id) =>{
-    const result = await pool.query("SELECT nombre, descripcion2, categoria, profesional, duracion, horario, precio, etapas, url FROM t_course where id_course = $1", [id]);
+    const result = await pool.query("SELECT nombre, descripcion2, categoria, profesional, duracion, horario, fecha_inicio, precio, etapas, imagen FROM t_course where id_course = $1", [id]);
     return  result.rows[0];
 };
 

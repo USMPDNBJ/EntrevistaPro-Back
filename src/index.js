@@ -11,6 +11,7 @@ import createUserTable from "./data/createUserTable.js"
 import createSessionTable from "./data/createSessionTable.js"
 import createPagoTable from "./data/createPagoTable.js"
 import createCourseTable from "./data/createCourseTable.js"
+import createCoursePayedTable from "./data/createCoursePayedTable.js"
 
 
 dotenv.config();
@@ -34,6 +35,7 @@ createUserTable()
 createSessionTable()
 createPagoTable()
 createCourseTable()
+createCoursePayedTable()
 
 
 //Testing
