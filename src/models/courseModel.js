@@ -6,7 +6,7 @@ export const getAllCourseService = async () => {
 };
 
 export const getCourseByIdService = async (id) => {
-    const result = await pool.query("SELECT nombre, descripcion2, categoria, profesional, duracion, horario, fecha_inicio, precio, etapas, imagen FROM t_course where id_course = $1", [id]);
+    const result = await pool.query("SELECT id_course,nombre, descripcion2, categoria, profesional, duracion, horario, fecha_inicio, precio, etapas, imagen FROM t_course where id_course = $1", [id]);
     return result.rows[0];
 };
 
