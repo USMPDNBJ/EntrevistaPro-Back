@@ -5,7 +5,13 @@ const router = express.Router();
 
 
 router.get("/course", getAllCourses);
+router.post("/course", createCourse);
+// Obtener un curso por ID (GET)
 router.get("/course/:id", getCourseById);
+// Actualizar un curso por ID (PUT)
+router.put("/course/:id", updateCourse);
+// Eliminar un curso por ID (DELETE)
+router.delete("/course/:id", deleteCourse);
 router.post("/coursePayed", createCoursePayed);
 
 export default router;
