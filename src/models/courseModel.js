@@ -9,6 +9,10 @@ export const getCourseByIdService = async (id) => {
     const result = await pool.query("SELECT id_course,nombre, descripcion2, categoria, profesional, duracion, horario, fecha_inicio, precio, etapas, imagen FROM t_course where id_course = $1", [id]);
     return result.rows[0];
 };
+export const getCourseRegisteredService = async (id) => {
+    const result = await pool.query("SELECT nombre, categoria, profesional, duracion, horario, fecha_inicio, url FROM t_course tc INNER JOIN t_coursePayed tcp ON tc.id_course = tcp.id_course  where id_user = $1", [id]);
+    return result.rows;
+};
 
 // Crear curso
 export const createCourseService = async (

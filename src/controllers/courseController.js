@@ -1,4 +1,4 @@
-import { getAllCourseService, getCourseByIdService, createCourseService, updateCourseService, deleteCourseService } from "../models/courseModel.js";
+import { getAllCourseService, getCourseByIdService, createCourseService, updateCourseService, deleteCourseService,getCourseRegisteredService } from "../models/courseModel.js";
 
 const handleResponse = (res, status, message, data = null) => {
     res.status(status).json({
@@ -23,6 +23,16 @@ export const getCourseById = async (req, res, next) => {
     try {
         const course = await getCourseByIdService(req.params.id);
         if (!course) return handleResponse(res, 404, "Course not found");
+        handleResponse(res, 201, "course fetched successfully", course)
+    } catch (err) {
+        next(err);
+    }
+}
+export const getCourseRegistered = async (req, res, next) => {
+
+    try {
+        const course = await getCourseRegisteredService(req.params.id);
+        if (!course) return handleResponse(res, 404, "Courses not found");
         handleResponse(res, 201, "course fetched successfully", course)
     } catch (err) {
         next(err);
