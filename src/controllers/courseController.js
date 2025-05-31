@@ -8,10 +8,10 @@ const handleResponse = (res, status, message, data = null) => {
     })
 }
 
-
 export const getAllCourses = async (req, res, next) => {
     try {
-        const courses = await getAllCourseService();
+        const courses = await getAllCourseService(req.params.id);
+     
         handleResponse(res, 201, "courses received", courses)
     } catch (err) {
         next(err);
@@ -28,6 +28,7 @@ export const getCourseById = async (req, res, next) => {
         next(err);
     }
 }
+
 export const getCourseRegistered = async (req, res, next) => {
 
     try {

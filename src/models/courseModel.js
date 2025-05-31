@@ -1,8 +1,23 @@
 import pool from "../config/db.js";
 
-export const getAllCourseService = async () => {
-    const result = await pool.query("SELECT id_course,  nombre, descripcion, categoria, fecha_inicio, profesional, duracion, precio, imagen FROM t_course");
-    return result.rows;
+export const getAllCourseService = async (userId) => {
+    try {
+        const query = `
+            SELECT c.id_course, c.nombre, c.descripcion, c.categoria, c.fecha_inicio, 
+                   c.profesional, c.duracion, c.precio, c.imagen
+            FROM t_course c
+            WHERE c.categoria = ANY (
+                SELECT unnest(habilidades)
+                FROM t_users t
+                WHERE id = $1
+            )
+        `;
+        const result = await pool.query(query, [userId]);
+        return result.rows;
+    } catch (error) {
+        console.error('Error en getAllCourseService:', error);
+        throw new Error('No se pudieron obtener los cursos');
+    }
 };
 
 export const getCourseByIdService = async (id) => {

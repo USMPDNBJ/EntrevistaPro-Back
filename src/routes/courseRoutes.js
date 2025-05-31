@@ -4,7 +4,7 @@ import { createCoursePayed } from "../controllers/coursePayedController.js";
 const router = express.Router();
 
 
-router.get("/course", getAllCourses);
+router.get("/catalogo/:id", getAllCourses);
 router.post("/course", createCourse);
 // Obtener un curso por ID (GET)
 router.get("/course/:id", getCourseById);
