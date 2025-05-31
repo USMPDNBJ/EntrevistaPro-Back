@@ -21,8 +21,7 @@ export const getAllCourses = async (req, res, next) => {
 export const getCourseById = async (req, res, next) => {
 
     try {
-        const course = await getCourseByIdService(req.params.id);
-        if (!course) return handleResponse(res, 404, "Course not found");
+        const course = await getCourseByIdService(req.params.id);        
         handleResponse(res, 201, "course fetched successfully", course)
     } catch (err) {
         next(err);
