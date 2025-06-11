@@ -1,6 +1,5 @@
 import express from "express";
 import { createUser, deleteUser, getAllUsers, getUserById, updateUser,verifiedUser,getAllWorkers, getPerfil } from "../controllers/userController.js";
-import validateUser from "../middlewares/inputValidators.js"
 const router = express.Router();
 
 router.post("/user", createUser);

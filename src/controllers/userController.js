@@ -9,9 +9,9 @@ const handleResponse = (res, status, message, data = null)=>{
 }
 
 export const createUser = async(req, res, next)=>{
-    const {correo, contrasena, nombres, apellidos, dni, celular, habilidades, rol} = req.body;
+    const {correo, contrasena, nombres, apellidos, dni, celular, habilidades, rol, comentarios} = req.body;
     try{
-        const newUser = await createUserService(correo, contrasena, nombres, apellidos, dni, celular, habilidades, rol);
+        const newUser = await createUserService(correo, contrasena, nombres, apellidos, dni, celular, habilidades, rol, comentarios);
         handleResponse(res, 201, "user created", newUser)
     }catch(err){
         next(err);
@@ -53,9 +53,9 @@ export const getUserById  = async(req, res, next)=>{
     }
 }
 export const updateUser = async(req, res, next)=>{
-    const {correo, contrasena, nombres, apellidos, dni, celular, habilidades} = req.body;
+    const {correo, contrasena, nombres, apellidos, dni, celular, habilidades, comentarios} = req.body;
     try{
-        const updatedUser = await updateUserService(correo, contrasena, nombres, apellidos, dni, celular, habilidades,req.params.id);
+        const updatedUser = await updateUserService(correo, contrasena, nombres, apellidos, dni, celular, habilidades, comentarios,req.params.id);
         if(!updatedUser) return handleResponse(res,404,"User not found");
         handleResponse(res, 201, "User updated successfully", updatedUser)   
     }catch(err){
