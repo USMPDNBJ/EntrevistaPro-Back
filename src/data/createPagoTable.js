@@ -8,7 +8,8 @@ const createPagoTable = async () => {
     nombre TEXT,
     fecha_expiracion DATE,
     cvv TEXT,
-    monto INTEGER
+    monto INTEGER,
+    numero tarjeta VARCHAR(20)
 )
     `
     try {
