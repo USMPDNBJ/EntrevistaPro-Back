@@ -11,12 +11,8 @@ ENV NODE_ENV=production
 
 # Set working directory
 WORKDIR /usr/src/app
-
-# Install dependencies leveraging Docker's caching
-RUN --mount=type=bind,source=package.json,target=package.json \
-    --mount=type=bind,source=package-lock.json,target=package-lock.json \
-    --mount=type=cache,target=/root/.npm \
-    npm ci --omit=dev
+COPY package*.json ./
+RUN npm install --omit=dev
 
 # Run as non-root user for security
 USER node

@@ -9,9 +9,9 @@ const handleResponse = (res, status, message, data = null) => {
 };
 
 export const createSession = async (req, res, next) => {
-    const { usuario_id, profesional_id, fecha, hora_inicio, hora_fin, estado, evaluacion, enlace } = req.body;
+    const { usuario_id, profesional_id, id_pago, fecha, hora_inicio, hora_fin, estado, evaluacion, enlace } = req.body;
     try {
-        const newSession = await createSessionService(usuario_id, profesional_id, fecha, hora_inicio, hora_fin, estado, evaluacion, enlace);
+        const newSession = await createSessionService(usuario_id, profesional_id, id_pago, fecha, hora_inicio, hora_fin, estado, evaluacion, enlace);
         handleResponse(res, 201, "Session created", newSession);
     } catch (err) {
         next(err);
@@ -47,9 +47,9 @@ export const getSessionByUserId = async (req, res, next) => {
 };
 
 export const updateSession = async (req, res, next) => {
-    const { usuario_id, profesional_id, fecha, hora_inicio, hora_fin, estado, evaluacion, enlace } = req.body;
+    const { usuario_id, profesional_id, id_pago, fecha, hora_inicio, hora_fin, estado, evaluacion, enlace } = req.body;
     try {
-        const updatedSession = await updateSessionService(usuario_id, profesional_id, fecha, hora_inicio, hora_fin, estado, evaluacion, enlace, req.params.id);
+        const updatedSession = await updateSessionService(usuario_id, profesional_id, id_pago, fecha, hora_inicio, hora_fin, estado, evaluacion, enlace, req.params.id);
         if (!updatedSession) return handleResponse(res, 404, "Session not found");
         handleResponse(res, 200, "Session updated successfully", updatedSession);
     } catch (err) {

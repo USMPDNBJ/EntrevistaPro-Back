@@ -1,9 +1,10 @@
 import pool from "../config/db.js"
 
-const createUserTable = async () => {
+const createPagoTable = async () => {
     const queryText = `
     CREATE TABLE IF NOT EXISTS t_pago (
     id_pago SERIAL PRIMARY KEY,
+    numero_tarjeta TEXT,
     nombre TEXT,
     fecha_expiracion DATE,
     cvv TEXT,
@@ -17,4 +18,4 @@ const createUserTable = async () => {
         console.log("Error creating pago table",error) 
     }
 }
-export default createUserTable;
+export default createPagoTable;

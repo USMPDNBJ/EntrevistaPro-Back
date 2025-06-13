@@ -9,9 +9,9 @@ const handleResponse = (res, status, message, data = null)=>{
 }
 
 export const createPago = async(req, res, next)=>{
-    const { nombre, fecha_expiracion, cvv, monto} = req.body;
+    const { numero_tarjeta, nombre, fecha_expiracion, cvv, monto} = req.body;
     try{
-        const newPago = await createPagoService( nombre, fecha_expiracion, cvv, monto);
+        const newPago = await createPagoService( numero_tarjeta, nombre, fecha_expiracion, cvv, monto);
         handleResponse(res, 201, "pago created", newPago)
     }catch(err){
         next(err);
@@ -36,9 +36,9 @@ export const getPagoById  = async(req, res, next)=>{
     }
 }
 export const updatePago = async(req, res, next)=>{
-    const { nombre, fecha_expiracion, cvv, montoº} = req.body;
+    const { numero_tarjeta, nombre, fecha_expiracion, cvv, monto} = req.body;
     try{
-        const updatedPago = await updatePagoService( nombre, fecha_expiracion, cvv, monto,req.params.id);
+        const updatedPago = await updatePagoService( numero_tarjeta, nombre, fecha_expiracion, cvv, monto,req.params.id);
         if(!updatedPago) return handleResponse(res,404,"Pago not found");
         handleResponse(res, 201, "Pago updated successfully", updatedPago)   
     }catch(err){
