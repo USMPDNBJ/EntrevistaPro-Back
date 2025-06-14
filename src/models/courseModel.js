@@ -21,7 +21,7 @@ export const getAllCourseService = async (userId) => {
 };
 
 export const getAllCourseServiceAll = async () =>{
-    const result = await pool.query("SELECT nombre, descripcion, categoria, fecha_inicio, profesional, duracion, horario, precio FROM t_course");
+    const result = await pool.query("SELECT id_course, nombre, descripcion, categoria, fecha_inicio, profesional, duracion, horario, precio FROM t_course");
     return  result.rows;
 };
 
