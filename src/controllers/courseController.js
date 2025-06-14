@@ -17,7 +17,7 @@ export const getAllCourses = async (req, res, next) => {
         next(err);
     }
 }
-export const getAllCoursesAll = async (res, next) => {
+export const getAllCoursesAll = async (req,res, next) => {
     try {
         const courses = await getAllCourseServiceAll();
      
