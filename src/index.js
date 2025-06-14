@@ -31,11 +31,11 @@ app.use("/api",courseRoutes)
 // Error handling middleware
 app.use(errorHandling)
 //Create table
-createUserTable()
-createSessionTable()
-createPagoTable()
-createCourseTable()
-createCoursePayedTable()
+// createUserTable()
+// createSessionTable()
+// createPagoTable()
+// createCourseTable()
+// createCoursePayedTable()
 
 
 //Testing

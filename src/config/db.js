@@ -10,6 +10,9 @@ if (process.env.NODE_ENV === 'development') {
         database: process.env.DB_DATABASE,
         password: process.env.DB_PASSWORD,
         port: process.env.DB_PORT,
+        ssl: {
+            rejectUnauthorized: false // solo para desarrollo
+        }
     })
     console.log('Usuario de DB:', pool.options.user);
     console.log('Contraseña de DB:', pool.options.password);
