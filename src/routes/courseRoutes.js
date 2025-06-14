@@ -1,11 +1,12 @@
 import express from "express";
-import { getAllCourses, getCourseById, createCourse,updateCourse, deleteCourse, getCourseRegistered } from "../controllers/courseController.js";
+import {getAllCoursesAll, getAllCourses, getCourseById, createCourse,updateCourse, deleteCourse, getCourseRegistered } from "../controllers/courseController.js";
 import { createCoursePayed } from "../controllers/coursePayedController.js";
 const router = express.Router();
 
 
 router.get("/catalogo/:id", getAllCourses);
 router.post("/course", createCourse);
+router.get("/course", getAllCoursesAll);
 // Obtener un curso por ID (GET)
 router.get("/course/:id", getCourseById);
 router.get("/courseRegistered/:id", getCourseRegistered);
